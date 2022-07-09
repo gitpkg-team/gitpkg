@@ -1,0 +1,22 @@
+#! /usr/bin/env python3
+from typer import Typer
+from os import system
+
+
+app = Typer()
+
+@app.command()
+def install(package: str):
+    pass
+
+@app.command()
+def remove(package: str):
+    pass
+
+@app.command()
+def update():
+    pass
+
+@app.command()
+def upgrade(package: str):
+    pass
