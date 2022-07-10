@@ -1,13 +1,17 @@
 #! /usr/bin/env python3
 from typer import Typer
 from os import system
+from pathlib import Path
 
 
 app = Typer()
 
 @app.command()
 def install(package: str):
-    pass
+    packagefile = open(f"{Path.home()}/.gitpkg/indexes/main/{package}.package")
+    packageurl = packagefile.read()
+    packagefile.close()
+    system(f"git clone {packageurl} ~/.gitpkg/packages/{package}")
 
 @app.command()
 def remove(package: str):
@@ -20,3 +24,6 @@ def update():
 @app.command()
 def upgrade(package: str):
     pass
+
+if __name__ == "__main__":
+    app()
