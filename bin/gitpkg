@@ -6,6 +6,7 @@ from pathlib import Path
 
 app = Typer()
 
+
 @app.command()
 def install(package: str):
     packagefile = open(f"{Path.home()}/.gitpkg/indexes/main/{package}.package")
@@ -13,17 +14,21 @@ def install(package: str):
     packagefile.close()
     system(f"git clone {packageurl} ~/.gitpkg/packages/{package}")
 
+
 @app.command()
 def remove(package: str):
     pass
+
 
 @app.command()
 def update():
     pass
 
+
 @app.command()
 def upgrade(package: str):
     pass
+
 
 if __name__ == "__main__":
     app()
